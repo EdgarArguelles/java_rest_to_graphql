@@ -1,6 +1,7 @@
 package com.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.leangen.graphql.annotations.types.GraphQLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.List;
 @ToString(of = {"id", "name"})
 @Entity
 @Table(name = "category")
+@GraphQLType(description = "Category which a game can belong to")
 public class Category {
 
     @Getter

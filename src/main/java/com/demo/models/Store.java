@@ -1,5 +1,7 @@
 package com.demo.models;
 
+import io.leangen.graphql.annotations.GraphQLIgnore;
+import io.leangen.graphql.annotations.types.GraphQLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.util.Set;
 @ToString(of = {"id", "name"})
 @Entity
 @Table(name = "store")
+@GraphQLType(description = "Store that sells games")
 public class Store {
 
     @Getter
@@ -33,11 +36,9 @@ public class Store {
     @Setter
     private String phone;
 
-    @Getter
     @Setter
     private Double sellsPerMonth;
 
-    @Getter
     @Setter
     private String whereMoneyIsSaved;
 
@@ -57,5 +58,15 @@ public class Store {
         this.sellsPerMonth = sellsPerMonth;
         this.whereMoneyIsSaved = whereMoneyIsSaved;
         this.games = games;
+    }
+
+    @GraphQLIgnore
+    public Double getSellsPerMonth() {
+        return sellsPerMonth;
+    }
+
+    @GraphQLIgnore
+    public String getWhereMoneyIsSaved() {
+        return whereMoneyIsSaved;
     }
 }

@@ -1,0 +1,23 @@
+query all {
+    games {
+        id
+        name
+    }
+}
+
+query byID {
+    game(id: 3) {
+        id
+        name
+        note
+        price
+        category {
+            name
+            minAge
+        }
+        stores {
+            name
+            address
+        }
+    }
+}

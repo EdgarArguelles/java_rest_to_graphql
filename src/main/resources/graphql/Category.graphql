@@ -1,0 +1,80 @@
+fragment allData on Category {
+    id
+    name
+    description
+    minAge
+    name
+    status
+    games {
+        name
+        stores {
+            name
+        }
+    }
+}
+
+query all {
+    categories {
+        id
+        name
+    }
+}
+
+query active {
+    categoriesByStatue(status: ACTIVE) {
+        name
+        status
+    }
+}
+
+query inactive {
+    categoriesByStatue(status: INACTIVE) {
+        name
+        status
+    }
+}
+
+query byID {
+    category(id: 5) {
+        ...allData
+    }
+}
+
+query byName {
+    categoriesByName(name: "AAA") {
+        ...allData
+    }
+}
+
+mutation create {
+    createCategory(
+        category: { name: "AAA", description: "new desc", status: 55, minAge: 15 }
+    ) {
+        ...allData
+    }
+}
+
+mutation delete {
+    deleteCategory(id: 6) {
+        ...allData
+    }
+}
+
+query memory {
+    category(id: 5) {
+        name
+        games {
+            name
+            category {
+                name
+                minAge
+                games {
+                    price
+                    category {
+                        id
+                    }
+                }
+            }
+        }
+    }
+}

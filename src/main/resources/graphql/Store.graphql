@@ -1,0 +1,22 @@
+query all {
+    stores {
+        id
+        name
+    }
+}
+
+query byID {
+    store(id: 2) {
+        id
+        name
+        address
+        name
+        phone
+        games {
+            name
+            category {
+                name
+            }
+        }
+    }
+}

@@ -1,6 +1,8 @@
 package com.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.leangen.graphql.annotations.GraphQLIgnore;
+import io.leangen.graphql.annotations.types.GraphQLType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +15,7 @@ import java.util.List;
 @ToString(of = {"id", "name"})
 @Entity
 @Table(name = "game")
+@GraphQLType(description = "An amazing game!!!!!!!")
 public class Game {
 
     @Getter
@@ -35,7 +38,6 @@ public class Game {
     @Setter
     private String note;
 
-    @Getter
     @Setter
     private Integer bugsFound;
 
@@ -61,5 +63,10 @@ public class Game {
         this.note = note;
         this.bugsFound = bugsFound;
         this.category = category;
+    }
+
+    @GraphQLIgnore
+    public Integer getBugsFound() {
+        return bugsFound;
     }
 }

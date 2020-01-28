@@ -2,14 +2,15 @@ package com.demo.services;
 
 import com.demo.exceptions.DemoDontFoundException;
 import com.demo.models.Category;
+import io.leangen.graphql.annotations.GraphQLEnumValue;
 
 import java.util.List;
 
 public interface CategoryService {
 
     enum STATUS {
-        ACTIVE,
-        INACTIVE
+        @GraphQLEnumValue(description = "Only categories active") ACTIVE,
+        @GraphQLEnumValue(description = "Only categories inactive") INACTIVE
     }
 
     /**
